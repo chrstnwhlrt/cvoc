@@ -117,6 +117,7 @@ public class AboutWindow extends javax.swing.JFrame {
 				closeButton = new JButton();
 				getContentPane().add(closeButton);
 				closeButton.setText("close");
+				closeButton.setToolTipText("close about");
 				closeButton.setBounds(114, 196, 77, 22);
 				closeButton.addMouseListener(new MouseAdapter() {
 					public void mouseClicked(MouseEvent evt) {

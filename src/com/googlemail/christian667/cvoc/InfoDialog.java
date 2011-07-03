@@ -69,6 +69,7 @@ public class InfoDialog extends javax.swing.JFrame implements Runnable {
 				closeButton = new JButton();
 				getContentPane().add(closeButton);
 				closeButton.setText("close");
+				closeButton.setToolTipText("close info");
 				closeButton.setBounds(93, 160, 155, 29);
 				closeButton.addMouseListener(new MouseAdapter() {
 					public void mouseClicked(MouseEvent evt) {
