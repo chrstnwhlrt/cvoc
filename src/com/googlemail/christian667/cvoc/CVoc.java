@@ -63,7 +63,7 @@ import com.googlemail.christian667.autoupdater.AutoUpdater;
 public class CVoc extends javax.swing.JFrame implements Runnable {
 	public static boolean easyPinyinEnter = true;
 
-	public static final int VERSION = 1;
+	public static final int VERSION = 2;
 	public static final String VERSIONURLSTRING = "http://cloud.github.com/downloads/christian667/cvoc/version";
 	public static final String FILEURLSTRING = "http://cloud.github.com/downloads/christian667/cvoc/cvoc.jar";
 
