@@ -56,6 +56,10 @@ import javax.swing.table.TableModel;
 
 import com.googlemail.christian667.autoupdater.AutoUpdater;
 
+/**
+ * @author Christian Wohlert [christian667@googlemail.com]
+ * 
+ */
 public class CVoc extends javax.swing.JFrame implements Runnable {
 	public static boolean easyPinyinEnter = true;
 
@@ -109,9 +113,6 @@ public class CVoc extends javax.swing.JFrame implements Runnable {
 	private static Font font85plain;
 	private static Font font25plain;
 
-	/**
-	 * Auto-generated main method to display this JFrame
-	 */
 	public static void main(String[] args) {
 		if (args.length == 1)
 			System.out.println("cVoc version: " + VERSION);
@@ -307,7 +308,7 @@ public class CVoc extends javax.swing.JFrame implements Runnable {
 				// menuBar.add(getExtrasMenu()); TODO: IMPLEMENT
 				menuBar.add(getHelpMenu());
 			}
-			ToolTipManager.sharedInstance().setDismissDelay(15000);
+			ToolTipManager.sharedInstance().setDismissDelay(30000);
 			pack();
 			this.setSize(568, 361);
 		} catch (Exception e) {
@@ -435,7 +436,7 @@ public class CVoc extends javax.swing.JFrame implements Runnable {
 		if (exportItem == null) {
 			exportItem = new JMenuItem();
 			exportItem
-					.setToolTipText("Export database with all vocs and your learning progress data (→ just copy it)");
+					.setToolTipText("<html>Export database with all vocs and your <br>learning progress data (→ just copy it)</html>");
 			exportItem.setText("export");
 			exportItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {
@@ -450,7 +451,7 @@ public class CVoc extends javax.swing.JFrame implements Runnable {
 		if (exportWithoutUsageItem == null) {
 			exportWithoutUsageItem = new JMenuItem();
 			exportWithoutUsageItem
-					.setToolTipText("Export database with all vocs WITHOUT you learning progress, → send your new entered vocs to a friend who imports it \"without sync\"");
+					.setToolTipText("<html>Export database with all vocs WITHOUT your learning progress,<br>→ send your new entered vocs to a friend who imports it \"without sync\"</html>");
 			exportWithoutUsageItem.setText("export WITHOUT usage data");
 			exportWithoutUsageItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {
@@ -466,7 +467,7 @@ public class CVoc extends javax.swing.JFrame implements Runnable {
 		if (createNewItem == null) {
 			createNewItem = new JMenuItem();
 			createNewItem
-					.setToolTipText("Creates a new BLANK database on a given file and opens it, → same as entering a new filename while start of cVoc");
+					.setToolTipText("<html>Creates a new BLANK database on a given file and opens it,<br>→ same as entering a new filename while start of cVoc</html>");
 			createNewItem.setText("new database");
 			createNewItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {
@@ -481,7 +482,7 @@ public class CVoc extends javax.swing.JFrame implements Runnable {
 		if (openToSyncItem == null) {
 			openToSyncItem = new JMenuItem();
 			openToSyncItem
-					.setToolTipText("Open another database and synchronize the vocs and PERSONAL LEARNING PROGRESS, → learn at work and just have two databases, which you want to sync sometimes");
+					.setToolTipText("<html>Open another database and synchronize the vocs and PERSONAL LEARNING PROGRESS,<br>→ learn at work, have two databases, which you want to sync sometimes</html>");
 			openToSyncItem.setText("import and sync");
 			openToSyncItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {
@@ -497,7 +498,7 @@ public class CVoc extends javax.swing.JFrame implements Runnable {
 			openToImportWithoutSync = new JMenuItem();
 			openToImportWithoutSync.setText("import (only new) vocabulary");
 			openToImportWithoutSync
-					.setToolTipText("Just import the new vocabulary without sync, → get new entered vocabulary by a friend and import the new one");
+					.setToolTipText("<html>Just import the new vocabulary without sync,<br>→ get new entered vocabulary by a friend and import the new one</html>");
 			openToImportWithoutSync.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {
 					FileHandler
@@ -623,7 +624,7 @@ public class CVoc extends javax.swing.JFrame implements Runnable {
 		return printItem;
 	}
 
-	private JMenuItem getAboutItem() { // TODO implement
+	private JMenuItem getAboutItem() {
 		if (aboutItem == null) {
 			aboutItem = new JMenuItem();
 			aboutItem.setText("about");
@@ -734,7 +735,7 @@ public class CVoc extends javax.swing.JFrame implements Runnable {
 		if (helpItem == null) {
 			helpItem = new JMenuItem();
 			helpItem.setText("report issue | request feature");
-			helpItem.setToolTipText("Report and issue to the developer or just request a new feature at github");
+			helpItem.setToolTipText("<html>Report and issue to the developer <br>or just request a new feature at github</html>");
 			if (!Desktop.isDesktopSupported())
 				aboutItem.setVisible(false);
 			else
