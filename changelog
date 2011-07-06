@@ -1,0 +1,15 @@
+### Version 2.0 released ###
+-	Prevented magic test from double containing
+	vocabulary
+-	Fixed range in magic test if none selected
+-	Added "select lecture range" to test range
+-	increased search results text size (+3)
+-	show update in progress
+
+### Version 1.0 released ###
+... (initial work done)
+
+
+zhidao
+qingwen
+mang

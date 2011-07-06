@@ -55,12 +55,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import com.googlemail.christian667.autoupdater.AutoUpdater;
+import com.googlemail.christian667.autoupdater.UpdateAble;
 
 /**
  * @author Christian Wohlert [christian667@googlemail.com]
  * 
  */
-public class CVoc extends javax.swing.JFrame implements Runnable {
+public class CVoc extends javax.swing.JFrame implements Runnable, UpdateAble {
 	public static boolean easyPinyinEnter = true;
 
 	public static final int VERSION = 2;
@@ -112,14 +113,25 @@ public class CVoc extends javax.swing.JFrame implements Runnable {
 	private static Font font36plain;
 	private static Font font85plain;
 	private static Font font25plain;
+	private static Font font15plain;
+	public static InfoDialog dialog;
 
 	public static void main(String[] args) {
 		if (args.length == 1)
 			System.out.println("cVoc version: " + VERSION);
 		else {
-			if (AutoUpdater.update(VERSIONURLSTRING, FILEURLSTRING, VERSION))
+			if (AutoUpdater.update(new UpdateAble() {
+
+				@Override
+				public void updateInProgress() {
+					CVoc.dialog = InfoDialog.show(
+							"Update in progress, please wait!", false);
+				}
+
+			}, VERSIONURLSTRING, FILEURLSTRING, VERSION)) {
+				CVoc.dialog.close();
 				InfoDialog.show("Update done - please restart!", true);
-			else {
+			} else {
 				FileHandler fchoose = FileHandler.getInstance(
 						FileHandler.FIRSTSTART, null);
 				SqliteHandler sqlite = new SqliteHandler(
@@ -157,12 +169,13 @@ public class CVoc extends javax.swing.JFrame implements Runnable {
 			e.printStackTrace();
 		}
 		font12plain = this.font.deriveFont(Font.PLAIN, 12);
-		font20italic = this.font.deriveFont(Font.ITALIC, 20);
-		font72plain = this.font.deriveFont(Font.PLAIN, 72);
+		font15plain = this.font.deriveFont(Font.PLAIN, 15);
 		font18plain = this.font.deriveFont(Font.PLAIN, 18);
-		font36plain = this.font.deriveFont(Font.PLAIN, 36);
-		font85plain = this.font.deriveFont(Font.PLAIN, 85);
 		font25plain = this.font.deriveFont(Font.PLAIN, 25);
+		font36plain = this.font.deriveFont(Font.PLAIN, 36);
+		font72plain = this.font.deriveFont(Font.PLAIN, 72);
+		font85plain = this.font.deriveFont(Font.PLAIN, 85);
+		font20italic = this.font.deriveFont(Font.ITALIC, 20);
 	}
 
 	public static Font getFont25plain() {
@@ -374,7 +387,7 @@ public class CVoc extends javax.swing.JFrame implements Runnable {
 				}
 			};
 			resultTable.setShowVerticalLines(false);
-			resultTable.setFont(font12plain);
+			resultTable.setFont(font15plain);
 			this.updateResults(this.sqlite.getAll(false));
 			resultTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		}
@@ -811,5 +824,11 @@ public class CVoc extends javax.swing.JFrame implements Runnable {
 		pinyin = pinyin.replace("ǐ", "i");
 		pinyin = pinyin.replace("ì", "i");
 		return pinyin;
+	}
+
+	@Override
+	public void updateInProgress() {
+		// TODO Auto-generated method stub
+
 	}
 }

@@ -10,6 +10,8 @@ public class TestGenerator {
 	private long lastLearnedBefore = 0;
 	private long idFrom = 0;
 	private long idTo = 0;
+	private long lectureFrom = 0;
+	private long lectureto = 0;
 	private boolean onlyUnknown = false;
 	private int maximumVocs = 0;
 
@@ -18,15 +20,28 @@ public class TestGenerator {
 	}
 
 	private ArrayList<Vocable> filtered() {
+		// Prefetch all vocs
 		ArrayList<Vocable> vocs = this.sqlite.getAll(this.onlyUnknown);
+
+		// Return all vocs if nothing limited
 		if (this.lecture == 0 && this.lastLearnedBefore == 0
-				&& this.idFrom == 0 && this.idTo == 0) {
+				&& this.idFrom == 0 && this.idTo == 0 && this.lectureFrom == 0
+				&& this.lectureto == 0) {
 			// Simply all
 			return vocs;
+			// Otherwise limit could be made
 		} else {
 			// Range the lecture
 			if (this.lecture > 0)
 				vocs = this.sqlite.getLecture(this.lecture, this.onlyUnknown);
+			else if (this.lectureFrom > 0 && this.lectureto > this.lectureFrom
+					&& this.lectureto <= sqlite.getNumberOfLectures()) {
+				// A range of lectures is set
+				vocs = new ArrayList<Vocable>();
+				for (long i = this.lectureFrom; i <= this.lectureto; i++)
+					vocs.addAll(this.sqlite.getLecture((int) i,
+							this.onlyUnknown));
+			}
 			// Range the id
 			if (this.idTo > 0 && this.idTo > this.idFrom) {
 				ArrayList<Vocable> idVocs = new ArrayList<Vocable>();
@@ -95,7 +110,7 @@ public class TestGenerator {
 		ArrayList<Vocable> mLlVocs = this
 				.cutMaximum(this.mostLastLearnedTest());
 		ArrayList<Vocable> mVocs = new ArrayList<Vocable>();
-		for (int i = 0; i < mUnkVocs.size(); i++) {
+		for (int i = 0; i < mUnkVocs.size() / 2; i++) {
 			mVocs.add(mUnkVocs.get(i));
 			mVocs.add(mLlVocs.get(i));
 		}
@@ -140,6 +155,14 @@ public class TestGenerator {
 
 	public long getIdTo() {
 		return idTo;
+	}
+
+	public void setLectureFrom(long lectureFrom) {
+		this.lectureFrom = lectureFrom;
+	}
+
+	public void setLectureto(long lectureto) {
+		this.lectureto = lectureto;
 	}
 
 	public boolean isOnlyUnknown() {

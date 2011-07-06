@@ -41,6 +41,10 @@ public class StartTest extends javax.swing.JFrame implements Runnable {
 	private JSeparator jSeparator1;
 	private JRadioButton magicTestButton;
 	private JRadioButton mostRareLearnedTestButton;
+	private JTextField lectureToField;
+	private JTextField lectureFromField;
+	private JLabel lectureToLabel;
+	private JLabel lectureFromLabel;
 	private JTextField maxVocsField;
 	private JLabel upToLabel;
 	private JCheckBox onlyUnknown;
@@ -154,6 +158,10 @@ public class StartTest extends javax.swing.JFrame implements Runnable {
 				getContentPane().add(getMaxVocsField());
 				getContentPane().add(getTransToPinyinFlashButton());
 				getContentPane().add(getEasyPinyin());
+				getContentPane().add(getLectureFromLabel());
+				getContentPane().add(getLectureToLabel());
+				getContentPane().add(getLectureFromField());
+				getContentPane().add(getLectureToField());
 				mostLastLearnedButton.setText("most last learned test");
 				mostLastLearnedButton.setBounds(343, 80, 188, 24);
 				getTestGroup().add(linearTestButton);
@@ -215,7 +223,7 @@ public class StartTest extends javax.swing.JFrame implements Runnable {
 		if (topic3 == null) {
 			topic3 = new JLabel();
 			topic3.setText("test interval:");
-			topic3.setBounds(19, 197, 116, 15);
+			topic3.setBounds(12, 198, 116, 15);
 		}
 		return topic3;
 	}
@@ -300,7 +308,7 @@ public class StartTest extends javax.swing.JFrame implements Runnable {
 	private JSeparator getJSeparator3() {
 		if (jSeparator3 == null) {
 			jSeparator3 = new JSeparator();
-			jSeparator3.setBounds(3, 406, 535, 16);
+			jSeparator3.setBounds(3, 433, 535, 16);
 		}
 		return jSeparator3;
 	}
@@ -309,7 +317,7 @@ public class StartTest extends javax.swing.JFrame implements Runnable {
 		if (cancelButton == null) {
 			cancelButton = new JButton();
 			cancelButton.setText("cancel");
-			cancelButton.setBounds(100, 415, 144, 32);
+			cancelButton.setBounds(100, 445, 144, 32);
 			cancelButton.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent evt) {
 					cancelButtonMouseClicked(evt);
@@ -323,7 +331,7 @@ public class StartTest extends javax.swing.JFrame implements Runnable {
 		if (startTestButton == null) {
 			startTestButton = new JButton();
 			startTestButton.setText("start test");
-			startTestButton.setBounds(303, 417, 147, 32);
+			startTestButton.setBounds(303, 444, 147, 32);
 			startTestButton.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent evt) {
 					startTestButtonMouseClicked(evt);
@@ -351,7 +359,7 @@ public class StartTest extends javax.swing.JFrame implements Runnable {
 	private JSeparator getJSeparator4() {
 		if (jSeparator4 == null) {
 			jSeparator4 = new JSeparator();
-			jSeparator4.setBounds(4, 326, 535, 16);
+			jSeparator4.setBounds(5, 369, 535, 16);
 		}
 		return jSeparator4;
 	}
@@ -360,7 +368,7 @@ public class StartTest extends javax.swing.JFrame implements Runnable {
 		if (directionLabel == null) {
 			directionLabel = new JLabel();
 			directionLabel.setText("direction:");
-			directionLabel.setBounds(51, 345, 76, 15);
+			directionLabel.setBounds(12, 382, 76, 15);
 		}
 		return directionLabel;
 	}
@@ -376,7 +384,7 @@ public class StartTest extends javax.swing.JFrame implements Runnable {
 		if (transToChineseButton == null) {
 			transToChineseButton = new JRadioButton();
 			transToChineseButton.setText("translation \u2192 chinese");
-			transToChineseButton.setBounds(190, 342, 169, 20);
+			transToChineseButton.setBounds(189, 378, 169, 20);
 			transToChineseButton.setFont(CVoc.getFont12plain());
 		}
 		return transToChineseButton;
@@ -386,7 +394,7 @@ public class StartTest extends javax.swing.JFrame implements Runnable {
 		if (transToPinyinFlashButton == null) {
 			transToPinyinFlashButton = new JRadioButton();
 			transToPinyinFlashButton.setText("translation \u2192 flash card");
-			transToPinyinFlashButton.setBounds(5, 374, 178, 19);
+			transToPinyinFlashButton.setBounds(5, 407, 178, 19);
 			transToPinyinFlashButton.setSelected(true);
 			transToPinyinFlashButton.setFont(CVoc.getFont12plain());
 		}
@@ -397,7 +405,7 @@ public class StartTest extends javax.swing.JFrame implements Runnable {
 		if (chineseToTransButton == null) {
 			chineseToTransButton = new JRadioButton();
 			chineseToTransButton.setText("chinese \u2192 translation");
-			chineseToTransButton.setBounds(188, 374, 164, 19);
+			chineseToTransButton.setBounds(188, 407, 164, 19);
 			chineseToTransButton.setFont(CVoc.getFont12plain());
 		}
 		return chineseToTransButton;
@@ -407,7 +415,7 @@ public class StartTest extends javax.swing.JFrame implements Runnable {
 		if (transToPinyinButton == null) {
 			transToPinyinButton = new JRadioButton();
 			transToPinyinButton.setText("translation \u2192 pinyin");
-			transToPinyinButton.setBounds(364, 343, 177, 19);
+			transToPinyinButton.setBounds(363, 379, 177, 19);
 			transToPinyinButton.setFont(CVoc.getFont12plain());
 		}
 		return transToPinyinButton;
@@ -417,7 +425,7 @@ public class StartTest extends javax.swing.JFrame implements Runnable {
 		if (flashCardButton == null) {
 			flashCardButton = new JRadioButton();
 			flashCardButton.setText("chinese \u2192 flash card");
-			flashCardButton.setBounds(364, 374, 163, 19);
+			flashCardButton.setBounds(363, 407, 163, 19);
 			flashCardButton.setFont(CVoc.getFont12plain());
 		}
 		return flashCardButton;
@@ -434,6 +442,10 @@ public class StartTest extends javax.swing.JFrame implements Runnable {
 		// Set the test generator
 		this.testGen.setIdFrom(Integer.valueOf(this.fromField.getText()));
 		this.testGen.setIdTo(Integer.valueOf(this.toField.getText()));
+		this.testGen
+				.setLectureto(Integer.valueOf(this.lectureToField.getText()));
+		this.testGen.setLectureFrom(Integer.valueOf(this.lectureFromField
+				.getText()));
 		this.testGen.setOnlyUnknown(this.onlyUnknown.isSelected());
 		this.testGen
 				.setMaximumVocs(Integer.valueOf(this.maxVocsField.getText()));
@@ -497,6 +509,10 @@ public class StartTest extends javax.swing.JFrame implements Runnable {
 			this.toField.setVisible(false);
 			this.upToLabel.setVisible(false);
 			this.maxVocsField.setVisible(false);
+			this.lectureFromLabel.setVisible(false);
+			this.lectureToLabel.setVisible(false);
+			this.lectureFromField.setVisible(false);
+			this.lectureToField.setVisible(false);
 		} else {
 			// Make other options visible
 			this.lectureLabel.setVisible(true);
@@ -509,6 +525,10 @@ public class StartTest extends javax.swing.JFrame implements Runnable {
 			this.toField.setVisible(true);
 			this.upToLabel.setVisible(true);
 			this.maxVocsField.setVisible(true);
+			this.lectureFromLabel.setVisible(true);
+			this.lectureToLabel.setVisible(true);
+			this.lectureFromField.setVisible(true);
+			this.lectureToField.setVisible(true);
 		}
 	}
 
@@ -547,5 +567,41 @@ public class StartTest extends javax.swing.JFrame implements Runnable {
 			easyPinyin.setSelected(true);
 		}
 		return easyPinyin;
+	}
+
+	private JLabel getLectureFromLabel() {
+		if (lectureFromLabel == null) {
+			lectureFromLabel = new JLabel();
+			lectureFromLabel.setText("Lecture from:");
+			lectureFromLabel.setBounds(12, 337, 123, 15);
+		}
+		return lectureFromLabel;
+	}
+
+	private JLabel getLectureToLabel() {
+		if (lectureToLabel == null) {
+			lectureToLabel = new JLabel();
+			lectureToLabel.setText("Lecture to:");
+			lectureToLabel.setBounds(220, 337, 123, 15);
+		}
+		return lectureToLabel;
+	}
+
+	private JTextField getLectureFromField() {
+		if (lectureFromField == null) {
+			lectureFromField = new JTextField();
+			lectureFromField.setBounds(161, 334, 41, 22);
+			lectureFromField.setText("0");
+		}
+		return lectureFromField;
+	}
+
+	private JTextField getLectureToField() {
+		if (lectureToField == null) {
+			lectureToField = new JTextField();
+			lectureToField.setText("0");
+			lectureToField.setBounds(358, 334, 41, 22);
+		}
+		return lectureToField;
 	}
 }
