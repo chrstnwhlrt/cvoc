@@ -1,3 +1,7 @@
+########################
+###	 cVoc changelog  ###
+########################
+
 ### Version 2.0 released ###
 -	Prevented magic test from double containing
 	vocabulary
@@ -8,8 +12,3 @@
 
 ### Version 1.0 released ###
 ... (initial work done)
-
-
-zhidao
-qingwen
-mang
