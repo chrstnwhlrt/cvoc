@@ -2,10 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="lib/google-api-translate-java-0.95.jar"/>
 	<classpathentry kind="lib" path="lib/au.jar"/>
-	<classpathentry kind="lib" path="lib/sqljet-1.0.5.jar"/>
-	<classpathentry kind="lib" path="lib/antlr-runtime-3.3.jar"/>
 	<classpathentry kind="lib" path="lib/pinyin4j-2.5.0.jar"/>
+	<classpathentry kind="lib" path="lib/sqljet-1.0.7.jar"/>
+	<classpathentry kind="lib" path="lib/google-api-translate-java-0.97.jar"/>
+	<classpathentry kind="lib" path="lib/json.jar"/>
+	<classpathentry kind="lib" path="lib/antlr-runtime-3.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

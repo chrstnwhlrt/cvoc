@@ -64,7 +64,7 @@ import com.googlemail.christian667.autoupdater.UpdateAble;
 public class CVoc extends javax.swing.JFrame implements Runnable, UpdateAble {
 	public static boolean easyPinyinEnter = true;
 
-	public static final int VERSION = 2;
+	public static final int VERSION = 3;
 	public static final String VERSIONURLSTRING = "http://www.tu-harburg.de/~sicw1071/cvoc/version";
 	public static final String FILEURLSTRING = "http://cloud.github.com/downloads/christian667/cvoc/cvoc.jar";
 
@@ -130,7 +130,7 @@ public class CVoc extends javax.swing.JFrame implements Runnable, UpdateAble {
 
 			}, VERSIONURLSTRING, FILEURLSTRING, VERSION)) {
 				CVoc.dialog.close();
-				InfoDialog.show("Update done - please restart!", true);
+				InfoDialog.show("Update done - please restart cVoc!", true);
 			} else {
 				FileHandler fchoose = FileHandler.getInstance(
 						FileHandler.FIRSTSTART, null);

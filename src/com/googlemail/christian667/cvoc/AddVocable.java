@@ -18,6 +18,7 @@ import javax.swing.WindowConstants;
 
 import net.sourceforge.pinyin4j.PinyinHelper;
 
+import com.google.api.GoogleAPI;
 import com.google.api.translate.Language;
 import com.google.api.translate.Translate;
 
@@ -49,7 +50,8 @@ public class AddVocable extends javax.swing.JFrame implements Runnable {
 		super();
 		this.sqlite = sqlite;
 		this.callback = callback;
-		Translate.setHttpReferrer("www.google.de");
+		GoogleAPI.setHttpReferrer("www.google.de");
+		GoogleAPI.setKey("AIzaSyARmCo5lPqilmfxa5itQBms7V4qI3Yay_k");
 		initGUI();
 	}
 
@@ -295,7 +297,7 @@ public class AddVocable extends javax.swing.JFrame implements Runnable {
 		// Get translation and set to translationField (if possible)
 		if (this.chineseField.getText().length() > 0) {
 			try {
-				this.translationField.setText(Translate.execute(
+				this.translationField.setText(Translate.DEFAULT.execute(
 						this.chineseField.getText(), Language.CHINESE,
 						Language.GERMAN));
 			} catch (Exception e) {

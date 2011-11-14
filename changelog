@@ -2,6 +2,12 @@
 ###	 cVoc changelog  ###
 ########################
 
+### Version 3.0 released ###
+-	Fixed the AutoUpdater bug (see issues)
+-	Update all external libs
+-	Moved translation to GoogleAPI V2
+-	Moved logo icon to higher resolution
+
 ### Version 2.0 released ###
 -	Prevented magic test from double containing
 	vocabulary
