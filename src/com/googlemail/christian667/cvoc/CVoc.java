@@ -64,10 +64,32 @@ import com.googlemail.christian667.autoupdater.UpdateAble;
 public class CVoc extends javax.swing.JFrame implements Runnable, UpdateAble {
 	public static boolean easyPinyinEnter = true;
 
-	public static final int VERSION = 3;
+	// Update and version informations
+	public static final int VERSION = 4;
 	public static final String VERSIONURLSTRING = "http://www.tu-harburg.de/~sicw1071/cvoc/version";
-	public static final String FILEURLSTRING = "http://cloud.github.com/downloads/christian667/cvoc/cvoc.jar";
 
+	/**
+	 * Fetch name of the launched file, to find the correct update file if
+	 * available.. (*.exe or *.jar)
+	 * 
+	 * @return The filename or if fetching failed "cvoc.jar"
+	 */
+	public static String getFileName() {
+		String fileName = null;
+		try {
+			fileName = new File(CVoc.class.getProtectionDomain()
+					.getCodeSource().getLocation().toURI()).getName();
+		} catch (URISyntaxException e) {
+			// If fetching the file name failed
+			return "cvoc.jar";
+		}
+		return fileName;
+	}
+
+	public static final String FILEURLSTRING = "http://cloud.github.com/downloads/christian667/cvoc/"
+			+ CVoc.getFileName();
+
+	// The private members
 	private static final long serialVersionUID = 1L;
 	private JMenuBar menuBar;
 	private JPanel searchPanel;
@@ -102,7 +124,6 @@ public class CVoc extends javax.swing.JFrame implements Runnable, UpdateAble {
 	private JTextField searchField;
 	private JLabel jLabel1;
 	private SqliteHandler sqlite;
-	public static Image logoImage;
 	private int port = 3141;
 	private HashMap<String, String> logins;
 	private Font font;
@@ -114,6 +135,8 @@ public class CVoc extends javax.swing.JFrame implements Runnable, UpdateAble {
 	private static Font font85plain;
 	private static Font font25plain;
 	private static Font font15plain;
+
+	public static Image logoImage;
 	public static InfoDialog dialog;
 
 	public static void main(String[] args) {

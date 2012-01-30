@@ -2,6 +2,11 @@
 ###	 cVoc changelog  ###
 ########################
 
+### Version 4.0 released ###
+-	Added generic filename recognition,
+	to allow AutoUpdater find the correct file to update (*.exe/*.jar)
+-	Added *exe file for windows users, wrapped with launch4j
+
 ### Version 3.0 released ###
 -	Fixed the AutoUpdater bug (see issues)
 -	Update all external libs
