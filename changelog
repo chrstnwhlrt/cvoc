@@ -2,6 +2,10 @@
 ###	 cVoc changelog  ###
 ########################
 
+### Version 4.1 released ###
+-	Fixed download link (github removed downloads)
+-	Fixed strange dispose error
+
 ### Version 4.0 released ###
 -	Added generic filename recognition,
 	to allow AutoUpdater find the correct file to update (*.exe/*.jar)

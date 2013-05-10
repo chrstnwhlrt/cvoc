@@ -86,7 +86,7 @@ public class CVoc extends javax.swing.JFrame implements Runnable, UpdateAble {
 		return fileName;
 	}
 
-	public static final String FILEURLSTRING = "http://cloud.github.com/downloads/christian667/cvoc/"
+	public static final String FILEURLSTRING = "http://www.tu-harburg.de/~sicw1071/cvoc/"
 			+ CVoc.getFileName();
 
 	// The private members
@@ -772,15 +772,13 @@ public class CVoc extends javax.swing.JFrame implements Runnable, UpdateAble {
 			helpItem = new JMenuItem();
 			helpItem.setText("report issue | request feature");
 			helpItem.setToolTipText("<html>Report and issue to the developer <br>or just request a new feature at github</html>");
-			if (!Desktop.isDesktopSupported())
-				aboutItem.setVisible(false);
-			else
+			if (Desktop.isDesktopSupported())
 				helpItem.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						try {
 							Desktop.getDesktop()
 									.browse(new URI(
-											"https://github.com/christian667/cvoc/issues/"));
+											"https://github.com/christian667/cvoc"));
 						} catch (IOException e) {
 						} catch (URISyntaxException e) {
 						}

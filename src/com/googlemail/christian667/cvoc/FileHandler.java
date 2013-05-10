@@ -39,7 +39,8 @@ public class FileHandler extends javax.swing.JFrame implements Runnable {
 				e.printStackTrace();
 			}
 		}
-		this.dispose();
+
+		// this.dispose(); TODO strange error
 		return this.file;
 	}
 
